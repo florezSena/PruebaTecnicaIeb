@@ -1,0 +1,52 @@
+﻿@model ConsumirApiPruebaTecnica.Models.DetalleProducto
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalle del producto</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdProducto"  class="control-label"></label>
+                <input asp-for="IdProducto" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <input value="@ViewBag.Nombre" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Precio</label>
+                <input value="@ViewBag.Precio" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Descripcion</label>
+                <input value="@ViewBag.Descripcion" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+            <input asp-for="Cantidad" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorIva" class="control-label"></label>
+            <input asp-for="ValorIva" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTotal" class="control-label"></label>
+            <input asp-for="ValorTotal" disabled class="form-control" />
+            </div>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-danger" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

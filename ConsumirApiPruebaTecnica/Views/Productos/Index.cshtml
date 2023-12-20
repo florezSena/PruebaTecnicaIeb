@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ConsumirApiPruebaTecnica.Models.Producto>
+@{
+    ViewData["Title"] = "Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="display:flex; width:100%; position:relative;" >
+    <form style="display:grid; place-items:center;" method="get" asp-action="Create">@{/*method get para que no salga que falta algo*/}
+        <button type="submit" class="btn btn-primary">Crear producto<i class="fa-solid fa-plus"></i></button>
+    </form>
+    <a asp-action="RegistrarDetalle" style="position:absolute; right:0px;" class="btn btn-secondary">Añadir detalle</a>
+</div>
+   
+<table class="table">
+    @if (TempData.ContainsKey("ErrorMessage"))
+    {
+        <div style="margin-top:25px;" class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <thead>
+        <tr>
+            <th>
+               ID
+            </th>
+            <th>
+               Nombre
+            </th>
+            <th>
+               Precio
+            </th>
+            <th>
+                Descripcion
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Detalle" asp-route-id="@item.IdProducto" asp-route-nombre="@item.Nombre" asp-route-precio="@item.Precio" asp-route-descripcion="@item.Descripcion">Ver mas</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
