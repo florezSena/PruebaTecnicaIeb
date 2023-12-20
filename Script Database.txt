@@ -1,0 +1,23 @@
+-- Crear la base de datos
+CREATE DATABASE PruebaTecnica;
+
+-- Usar la base de datos
+USE PruebaTecnica;
+
+-- Crear la tabla Producto
+CREATE TABLE Producto (
+    IdProducto INT IDENTITY(1,1) PRIMARY KEY,
+	  Nombre VARCHAR(50) Not Null,
+    Descripcion VARCHAR(50) Not Null,
+    Precio Float Not Null
+);
+
+-- Crear la tabla DetalleProducto
+CREATE TABLE DetalleProducto (
+    IdDetalleProducto INT IDENTITY(1,1) PRIMARY KEY,
+	  IdProducto int Not null,
+    Cantidad INT Not Null,
+	  ValorTotal Float Not Null,
+	  ValorIva Float Not Null,
+	  FOREIGN KEY (IdProducto) REFERENCES Producto(IdProducto)
+);
